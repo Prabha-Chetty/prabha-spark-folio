@@ -1,7 +1,9 @@
 import { GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Education = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const education = [
     {
       degree: "BE in Electronics & Communication Engineering",
@@ -21,11 +23,11 @@ export const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20">
+    <section id="education" className="py-20" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="gradient-text">Education</span>
             </h2>
@@ -37,8 +39,8 @@ export const Education = () => {
             {education.map((edu, idx) => (
               <Card
                 key={edu.degree}
-                className="border-border/50 bg-card hover:border-primary/50 transition-all"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                style={{ transitionDelay: `${0.2 + idx * 0.1}s` }}
               >
                 <CardContent className="pt-6">
                   <div className="flex items-start gap-4">

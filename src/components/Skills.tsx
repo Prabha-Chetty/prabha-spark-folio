@@ -1,7 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const skillCategories = [
     {
       title: "Languages & Frameworks",
@@ -49,11 +51,11 @@ export const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Technical <span className="gradient-text">Skills</span>
             </h2>
@@ -68,8 +70,10 @@ export const Skills = () => {
             {skillCategories.map((category, idx) => (
               <Card
                 key={category.title}
-                className="border-border/50 bg-card hover:border-primary/50 transition-all"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg ${
+                  category.color === 'primary' ? 'hover:shadow-primary/20' : 'hover:shadow-accent/20'
+                } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                style={{ transitionDelay: `${0.2 + idx * 0.1}s` }}
               >
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
@@ -83,7 +87,7 @@ export const Skills = () => {
                       <Badge
                         key={skill}
                         variant="secondary"
-                        className="px-3 py-1 text-sm hover:bg-primary/20 transition-colors"
+                        className="px-3 py-1 text-sm hover:bg-primary/20 transition-all duration-300 hover:scale-110 cursor-default"
                       >
                         {skill}
                       </Badge>

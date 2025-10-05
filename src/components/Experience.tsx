@@ -1,7 +1,9 @@
 import { Building2, Calendar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
       company: "Bosswallah Technologies",
@@ -40,11 +42,11 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-card/30">
+    <section id="experience" className="py-20 bg-card/30" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Professional <span className="gradient-text">Experience</span>
             </h2>
@@ -57,7 +59,7 @@ export const Experience = () => {
           {/* Timeline */}
           <div className="relative">
             {/* Timeline Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border transform -translate-x-1/2" />
+            <div className={`hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border transform -translate-x-1/2 transition-all duration-1000 ${isVisible ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"}`} style={{ transformOrigin: "top" }} />
 
             {/* Experience Cards */}
             <div className="space-y-12">
@@ -67,12 +69,11 @@ export const Experience = () => {
                   className={`relative ${
                     idx % 2 === 0 ? "md:pr-1/2 md:text-right" : "md:pl-1/2 md:ml-auto"
                   }`}
-                  style={{ animationDelay: `${idx * 0.2}s` }}
                 >
                   {/* Timeline Dot */}
-                  <div className="hidden md:block absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background glow-primary" />
+                  <div className={`hidden md:block absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background glow-primary transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"}`} style={{ transitionDelay: `${0.5 + idx * 0.2}s` }} />
 
-                  <Card className="border-border/50 bg-card hover:border-primary/50 transition-all">
+                  <Card className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: `${0.3 + idx * 0.2}s` }}>
                     <CardContent className="pt-6">
                       {/* Header */}
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">

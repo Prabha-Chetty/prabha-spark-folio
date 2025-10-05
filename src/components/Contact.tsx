@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Linkedin, Github, MapPin, Languages } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation();
   return (
-    <section id="contact" className="py-20 bg-card/30">
+    <section id="contact" className="py-20 bg-card/30" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Let&apos;s <span className="gradient-text">Connect</span>
             </h2>
@@ -21,7 +23,7 @@ export const Contact = () => {
           {/* Contact Info */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Email Card */}
-            <Card className="border-border/50 bg-card hover:border-primary/50 transition-all">
+            <Card className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: "0.2s" }}>
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-lg">
@@ -41,7 +43,7 @@ export const Contact = () => {
             </Card>
 
             {/* LinkedIn Card */}
-            <Card className="border-border/50 bg-card hover:border-primary/50 transition-all">
+            <Card className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg hover:shadow-accent/20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: "0.3s" }}>
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
@@ -66,7 +68,7 @@ export const Contact = () => {
           {/* Additional Info */}
           <div className="grid md:grid-cols-2 gap-6">
             {/* Languages */}
-            <Card className="border-border/50 bg-card">
+            <Card className={`border-border/50 bg-card transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: "0.4s" }}>
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-lg">
@@ -83,7 +85,7 @@ export const Contact = () => {
             </Card>
 
             {/* Location */}
-            <Card className="border-border/50 bg-card">
+            <Card className={`border-border/50 bg-card transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: "0.5s" }}>
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
@@ -101,7 +103,7 @@ export const Contact = () => {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className={`text-center mt-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{ transitionDelay: "0.6s" }}>
             <Button variant="hero" size="lg" asChild>
               <a href="mailto:prabha.ochetty@gmail.com">
                 <Mail className="mr-2 h-5 w-5" />

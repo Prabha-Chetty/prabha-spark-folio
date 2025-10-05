@@ -1,8 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Boxes, Database, Search, Phone, Hotel } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const projects = [
     {
       title: "Microservices Migration",
@@ -42,11 +44,11 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Featured <span className="gradient-text">Projects</span>
             </h2>
@@ -61,8 +63,8 @@ export const Projects = () => {
             {projects.map((project, idx) => (
               <Card
                 key={project.title}
-                className="border-border/50 bg-card hover:border-primary/50 transition-all group"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className={`border-border/50 bg-card hover:border-primary/50 transition-all duration-700 group hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                style={{ transitionDelay: `${0.2 + idx * 0.1}s` }}
               >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-4">
