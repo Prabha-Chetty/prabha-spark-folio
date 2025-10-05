@@ -80,7 +80,7 @@ export const About = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Leadership & Delivery</h3>
                       <p className="text-sm text-muted-foreground">
-                        Led teams of 4 engineers, shipped critical features in days, and modernized legacy systems.
+                        Led teams of 6 engineers, shipped critical features in days, and modernized legacy systems.
                       </p>
                     </div>
                   </div>

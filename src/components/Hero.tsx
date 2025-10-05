@@ -3,6 +3,15 @@ import { Download, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
+  const handleDownloadResume = () => {
+    // Create a link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Prabha-Backend-Developer-Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -56,7 +65,7 @@ export const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fade-in opacity-0" style={{ animationDelay: "1s" }}>
-            <Button variant="hero" size="lg" className="group">
+            <Button variant="hero" size="lg" className="group" onClick={handleDownloadResume}>
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               Download Resume
             </Button>
@@ -79,7 +88,7 @@ export const Hero = () => {
               <div className="text-sm text-muted-foreground">Projects Delivered</div>
             </div>
             <div className="space-y-1">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">4</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text">6</div>
               <div className="text-sm text-muted-foreground">Team Members Led</div>
             </div>
           </div>

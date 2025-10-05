@@ -34,6 +34,7 @@ export const Skills = () => {
         "Kafka",
         "CDC",
         "JotURL",
+        "NetCore"
       ],
       color: "primary",
     },
@@ -45,6 +46,7 @@ export const Skills = () => {
         "Search & Indexing (Typesense, Elasticsearch)",
         "Cloud Integrations",
         "Team Leadership",
+        "Vibe Coding"
       ],
       color: "accent",
     },

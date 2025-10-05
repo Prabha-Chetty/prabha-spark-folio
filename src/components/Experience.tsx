@@ -6,7 +6,7 @@ export const Experience = () => {
   const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
-      company: "Bosswallah Technologies",
+      company: "Bosswallah Technologies Private Limited (Formerly known as freedom Apps)",
       role: "Product Development Lead",
       period: "2019 – Present",
       achievements: [
