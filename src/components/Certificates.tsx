@@ -12,7 +12,7 @@ export const Certificates = () => {
       issuer: "Outskill",
       date: "2024",
       description: "Comprehensive training on Generative AI technologies, prompt engineering, and practical AI implementation strategies.",
-      tags: ["AI", "Generative AI", "LLMs", "Prompt Engineering"],
+      tags: ["AI", "Generative AI", "LLMs", "Prompt Engineering", "Custom GPTs", "AI Agents", "AI Product Building"],
     },
   ];
 
